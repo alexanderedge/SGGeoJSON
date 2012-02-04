@@ -62,6 +62,9 @@
     return [self x];
 }
 
+- (CLLocationCoordinate2D) coordinates{
+    return CLLocationCoordinate2DMake([self x], [self y]);
+}
 @end
 
 @implementation NSMutableArray (GeoJSONObject)
@@ -86,6 +89,13 @@
 - (void) setLongitude:(double)longitude
 {
     [self setX:longitude];
+}
+                        
+- (void) setCoordinate:(CLLocationCoordinate2D)coordinate{
+      
+    [self setX:coordinate.latitude];
+    [self setY:coordinate.longitude];
+                            
 }
 
 @end

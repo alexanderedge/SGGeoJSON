@@ -65,10 +65,20 @@
     return coordinates;
 }
 
+- (NSString *)crs{
+    
+    NSString* crs = nil;
+    if([self hasCRS])
+        crs = [[[self objectForKey:@"crs"] properties] objectForKey:@"name"];
+    
+    return crs;
+    
+}
+
 - (NSDictionary*) properties
 {
     NSDictionary* properties = nil;
-    if([self isFeature])
+    if([self isFeature] || [self hasCRS])
             properties = [self objectForKey:@"properties"];
     
     return properties;
@@ -90,6 +100,11 @@
         features = [self objectForKey:@"features"];
     
     return features;
+}
+
+- (BOOL) hasCRS
+{
+    return [self objectForKey:@"crs"] != nil;
 }
 
 - (BOOL) isFeature
@@ -145,6 +160,14 @@
 - (void) setCoordinates:(NSArray*)coordinates
 {
     [self setObject:coordinates forKey:@"coordinates"];
+}
+
+- (void) setCrs:(NSString *)crs{
+    
+    NSDictionary *dic = [NSMutableDictionary dictionaryWithObjectsAndKeys:@"name",@"type",[NSDictionary dictionaryWithObjectsAndKeys:crs,@"name", nil],@"properties",nil];
+    
+    [self setObject:dic forKey:@"crs"];
+    
 }
 
 - (void) setProperties:(NSDictionary*)properties

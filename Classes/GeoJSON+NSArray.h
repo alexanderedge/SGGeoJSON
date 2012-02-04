@@ -33,6 +33,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <CoreLocation/CoreLocation.h>
 
 /*!
 * @category NSArray(SGGeoJSONObject)
@@ -68,6 +69,13 @@
 */
 - (double) longitude;
 
+/*!
+ * @method coordinates
+ * @abstract Retrieve the coordinates of the point
+ * @result ￼CLLocationCoordinate2D of the point
+ */
+- (CLLocationCoordinate2D) coordinates;
+
 @end
 
 /*!
@@ -86,23 +94,30 @@
 /*!
 * @method setY:
 * @abstract Stores the new y value at index 1.
-* @param x The new y value.
+* @param y The new y value.
 */
 - (void) setY:(double)y;
 
 /*!
 * @method setLatitude:
 * @abstract Stores the new latitude value at index 1.
-* @param x The new latitude value.
+* @param latitude The new latitude value.
 */
 - (void) setLatitude:(double)latitude;
 
 /*!
 * @method setLongitude:
 * @abstract Stores the new longitude value at index 0.
-* @param x The new longitude value.
+* @param longitude The new longitude value.
 */
 - (void) setLongitude:(double)longitude;
+
+/*!
+ * @method setCoordinate
+ * @abstract Set the coordinate of the point
+ * @param coordinates The new coordinates.
+ */
+- (void) setCoordinate:(CLLocationCoordinate2D)coordinates;
 
 @end
 

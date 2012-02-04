@@ -61,6 +61,8 @@
 */
 - (NSArray*) coordinates;
 
+- (NSString*) crs;
+
 /*!
 * @method properties
 * @abstract Returns the GeoJSONObject associated with the key properties.
@@ -88,6 +90,13 @@
 * @result YES if the object is a feature; otherwise NO.
 */
 - (BOOL) isFeature;
+
+/*!
+* @method hasCRS
+* @abstract Determines whether this GeoJSON object has a coordinate reference system. 
+* @result YES if the object has a CRS; otherwise NO.
+*/
+- (BOOL) hasCRS;
 
 /*!
 * @method isFeatureCollection
@@ -153,6 +162,13 @@
 * @param coordinates ￼The GeoJSONObject to store.
 */
 - (void) setCoordinates:(NSArray*)coordinates;
+
+/*!
+* @method setCrs:
+* @abstract Sets the coordinate system of the GeoJSONObject
+* @param crs ￼String representing the coordinate reference system (http://geojson.org/geojson-spec.html#coordinate-reference-system-objects)
+*/
+- (void) setCrs:(NSString *)crs;
 
 /*!
 * @method setProperties:
